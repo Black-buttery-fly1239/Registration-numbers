@@ -1,0 +1,34 @@
+/****************** The box model *******************************/
+@media(min-width: 800px) {
+    .col4 {
+        display: flex;
+    }
+}
+
+.container {
+        background-color: #34eb9b;
+        width: 480px;
+        border:  3px  ridge  black;
+        padding: 50px;
+        margin: auto;
+        font-size: 17.5px;
+    
+}
+
+.empty {
+    color: red;
+}
+
+ .col1 {
+    text-align: center;
+ }
+
+ .jojo span {
+    background-color: yellow;
+    border-style: solid; 
+    border-color: black;
+    border-radius: 25px;
+    border-spacing: 13px;
+    margin-right: 20px;
+    /* border-spacing: 15px 50px; */
+ }
