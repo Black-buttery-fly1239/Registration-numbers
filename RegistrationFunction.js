@@ -3,8 +3,8 @@ function Registration(existingReg) {
    //console.log(existingReg);
 
     function theReg(reg) {
-        reg = reg.toLowerCase()
-        reg = reg.toUpperCase()
+        // reg = reg.toLowerCase()
+        // reg = reg.toUpperCase()
         if (reg) {
             if (!regNo.includes(reg)) {
                 //console.log(!regNo);
@@ -40,22 +40,7 @@ function Registration(existingReg) {
 
 //     }
 
-    // function numberPlate(town) {
-    //     var filteredReg = [] 
-    //    for(var i=0; i< town.length; i++) {
-    //        if(town.startsWith("CK")){
-    //         mafilteredRegl.push(town)
-    //        }
-    //        if(town.startsWith("CY")){
-    //         filteredReg.push(town)
-    //        }
-    //        if(town.startsWith("CA")){
-    //         filteredReg.push(town)
-    //        }
-           
-    //    }
-    //    return filteredReg
-    // }
+    
     
     return {
         theReg,
