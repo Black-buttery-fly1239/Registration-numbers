@@ -26,7 +26,7 @@ if (localStorage['regNumber']) {
   existingReg = JSON.parse(localStorage.getItem('regNumber'));
   // console.log(existingReg);
 }
-console.log(existingReg);
+// console.log(existingReg);
 window.addEventListener('load', (event) => {
   existingReg
   for (var i = 0; i < existingReg.length; i++) {
@@ -34,7 +34,7 @@ window.addEventListener('load', (event) => {
     // zabalaza = existingReg.key(i)
     // console.log(zabalaza);
     var pule = document.createElement('span');
-    console.log(existingReg[i]);
+    // console.log(existingReg[i]);
     pule.innerHTML = existingReg[i]
     listElem.appendChild(pule)
   }
@@ -86,22 +86,21 @@ showBtnElem.addEventListener('click', function () {
     if (localStorage['regNumber']) {
       existingReg = JSON.parse(localStorage.getItem('regNumber'));
     }
-
+    while (listElem.hasChildNodes()) {
+      listElem.removeChild(listElem.firstChild);
+    }
     var suza = existingReg.filter(reg => reg.startsWith(regRadioBtn.value));
-
     if (regRadioBtn.value && suza.length > 0) {
-      for (var i = 0; i < suza.length; i++) {
+       for (var i = 0; i < suza.length; i++) {
 
-        while (listElem.hasChildNodes()) {
-          listElem.removeChild(listElem.firstChild);
-        }
-
+     
+console.log(suza[i])
         pule = document.createElement('span');
         pule.innerHTML = suza[i]
         listElem.appendChild(pule);
       }
     } else {
-      console.log(suza);
+      // console.log(suza);
       //alert()
       emptyElem.innerHTML = "There is no matching registration number of that town at the current moment!"
       setTimeout(function () {
@@ -130,9 +129,9 @@ viewBtnElem.addEventListener('click', function () {
     for (var i = 0; i < zabalaza.length; i++) {
 
       // zabalaza = existingReg.key(i)
-      console.log(zabalaza);
+      // console.log(zabalaza);
       var pule = document.createElement('span');
-      console.log(zabalaza[i]);
+      // console.log(zabalaza[i]);
       pule.innerHTML = zabalaza[i]
       listElem.appendChild(pule)
     }
