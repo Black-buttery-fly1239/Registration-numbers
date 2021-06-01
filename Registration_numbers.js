@@ -2,6 +2,8 @@
 var regSet = document.querySelector(".RegistrationWithSettings")
 //get a reference for the error display
 var emptyElem = document.querySelector(".empty")
+//get a reference for the Add message display
+var spaceElem = document.querySelector(".emptySpace")
 //get a reference for the add buttton
 var AddBtnElem = document.querySelector(".Addbutton")
 //get a reference for the radio buttons display
@@ -23,7 +25,7 @@ var existingReg;
 if (localStorage['regNumber']) {
   existingReg = JSON.parse(localStorage.getItem('regNumber'));
   // console.log(existingReg);
-
+}
 console.log(existingReg);
 window.addEventListener('load', (event) => {
   existingReg
@@ -37,55 +39,41 @@ window.addEventListener('load', (event) => {
     listElem.appendChild(pule)
   }
 
- 
 });
-}
 var settingInstance = Registration(existingReg);
 
 //Do the Addbtn to display the textbox
 AddBtnElem.addEventListener('click', function () {
-  
 
-  if (settingInstance.checkValidate(regSet.value)) {
-    // if (regSet.value.length > 0) {
-      settingInstance.theReg(regSet.value);
+  var regies = settingInstance.getReg()
+  if (!regies.includes(regSet.value.toUpperCase())) {
 
-      var regies = settingInstance.getReg()
-     
-      // regSet = regSet.toUpperCase();
-      for (var i = 0; i < regies.length; i++) {
-        
-       
-        if (regies[i] === regSet.value) {
-          console.log("DFDFDFDFDFF")
+    if (settingInstance.checkValidate(regSet.value)) {
+      // regSet = regSet.value.toUpperCase();
 
-          
-        }
-        else{
-          let pule = document.createElement('span')
-  
-          pule.innerHTML = regies[i]
-          listElem.appendChild(pule);
-          console.log('sfsfsfsdfs')
-        }
+      let pule = document.createElement('span')
+      if (regSet.value.length > 0) {
+        pule.innerHTML = regSet.value
+        listElem.appendChild(pule);
       }
-    // }
 
-    //console.log(Object.keys(settingInstance.getReg()))
-    localStorage.setItem('regNumber', JSON.stringify(settingInstance.getReg()));
+      //console.log(Object.keys(settingInstance.getReg()))
+      settingInstance.theReg(regSet.value);
+      localStorage.setItem('regNumber', JSON.stringify(settingInstance.getReg()));
 
-    emptyElem.innerHTML = "Registration Added!"
-    setTimeout(function () {
-      emptyElem.innerHTML = "";
-    }, 3000);
-  } else {
-    emptyElem.innerHTML = "Please enter valid registration number!"
-    setTimeout(function () {
-      emptyElem.innerHTML = "";
-    }, 4000)
+      spaceElem.innerHTML = "Registration Added!!!"
+      setTimeout(function () {
+        spaceElem.innerHTML = "";
+      }, 3000);
+    } else {
+      emptyElem.innerHTML = "Please enter valid registration number!"
+      setTimeout(function () {
+        emptyElem.innerHTML = "";
+      }, 4000)
+    }
+    // regSet.value = "";
   }
   regSet.value = "";
-
 });
 
 
@@ -133,7 +121,7 @@ showBtnElem.addEventListener('click', function () {
 
 
 viewBtnElem.addEventListener('click', function () {
-
+  var regies = settingInstance.getReg()
   while (listElem.hasChildNodes()) {
     listElem.removeChild(listElem.firstChild);
   }
@@ -148,11 +136,12 @@ viewBtnElem.addEventListener('click', function () {
       pule.innerHTML = zabalaza[i]
       listElem.appendChild(pule)
     }
-  } else {
-    emptyElem.innerHTML = "The localstorage is empty!!!"
-    setTimeout(function () {
-      emptyElem.innerHTML = "";
-    }, 4000)
+    }
+    else if(regies.length === 0){
+      emptyElem.innerHTML = "The localstorage is empty!!!"
+          setTimeout(function () {
+            emptyElem.innerHTML = "";
+          }, 4000)
   }
 });
 

@@ -3,8 +3,7 @@ function Registration(existingReg) {
    //console.log(existingReg);
 
     function theReg(reg) {
-        // reg = reg.toLowerCase()
-        // reg = reg.toUpperCase()
+        reg = reg.toUpperCase()
         if (reg) {
             if (!regNo.includes(reg)) {
                 //console.log(!regNo);
@@ -47,6 +46,6 @@ function Registration(existingReg) {
         getReg,
         checkValidate,
         //plate,
-        // numberPlate,
+        
     }
 }
