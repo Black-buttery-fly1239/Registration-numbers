@@ -49,14 +49,13 @@ AddBtnElem.addEventListener('click', function () {
   if (!regies.includes(regSet.value.toUpperCase())) {
 
     if (settingInstance.checkValidate(regSet.value)) {
-      // regSet = regSet.value.toUpperCase();
+      
 
       let pule = document.createElement('span')
       if (regSet.value.length > 0) {
         pule.innerHTML = regSet.value
         listElem.appendChild(pule);
       }
-
       //console.log(Object.keys(settingInstance.getReg()))
       settingInstance.theReg(regSet.value);
       localStorage.setItem('regNumber', JSON.stringify(settingInstance.getReg()));
@@ -71,7 +70,6 @@ AddBtnElem.addEventListener('click', function () {
         emptyElem.innerHTML = "";
       }, 4000)
     }
-    // regSet.value = "";
   }
   regSet.value = "";
 });
@@ -101,7 +99,6 @@ console.log(suza[i])
       }
     } else {
       // console.log(suza);
-      //alert()
       emptyElem.innerHTML = "There is no matching registration number of that town at the current moment!"
       setTimeout(function () {
         emptyElem.innerHTML = "";
@@ -127,11 +124,8 @@ viewBtnElem.addEventListener('click', function () {
   var zabalaza = existingReg
   if (existingReg) {
     for (var i = 0; i < zabalaza.length; i++) {
-
-      // zabalaza = existingReg.key(i)
       // console.log(zabalaza);
       var pule = document.createElement('span');
-      // console.log(zabalaza[i]);
       pule.innerHTML = zabalaza[i]
       listElem.appendChild(pule)
     }

@@ -26,6 +26,9 @@
  .col1 {
     text-align: center;
  }
+ .RegistrationWithSettings {
+     width: 53%;
+ }
 
  .jojo span {
     background-color: yellow;
