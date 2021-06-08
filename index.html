@@ -6,9 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <link rel="stylesheet" href="Registration_numbers.css">
-</head>
 
+    <script type="text/x-template" class="userTemplate">
+    <p class="reggiez">
+        {{#each}}
+        <span>{{registration}}</span>
+        {{/each}}
+        </p>
+        </script>
+</head>
+ <!-- {{#each}}
+{{/each}}  -->
 <body>
     <div class="container">
         <div class="col1">
@@ -20,7 +30,7 @@
             <span class="empty"></span>
             <span class="emptySpace"></span>
         </label> <br>
-         <br>
+        <br>
 
         <div class="col2">
             <label for="">Registration Number</label>
@@ -50,20 +60,77 @@
 
         </div>
         <br>
-       <div class="col5">
-           <button class="ShowBtn" type="button" name="button">Show</button>
-           <button class="ViewAllBtn" type="button" name="button">View All</button>
-           <button class="ResetBtn" type="button" name="button">Reset</button>
-       </div>
+        <div class="col5">
+            <button class="ShowBtn" type="button" name="button">Show</button>
+            <button class="ViewAllBtn" type="button" name="button">View All</button>
+            <button class="ResetBtn" type="button" name="button">Reset</button>
+        </div>
 
-       <label class="">
-        <span class="registration"></span>
-    </label><br>
+        <label class="">
+            <span class="registration"></span>
+        </label><br>
 
-    <div class="jojo"></div>
-    
+        <div class="jojo"></div>
+
+    </div><br>
+    <br>
+
+
+    <div class="container">
+        <div class="col1">
+            <h1>Registration Numbers</h1>
+            <hr>
+        </div>
+
+        <label class="">
+            <span class="empties"></span>
+            <span class="emptiesSpace"></span>
+        </label> <br>
+        <br>
+
+        <div class="col2">
+            <label for="">Registration Number</label>
+            <input type="" name="RegistrationSettings" class="RegistrationSettings" id="text-code" value=""
+                placeholder="Format:CA 123-34/CK 123456/CY 456-789">
+        </div><br>
+
+        <div class="col3">
+            <button class="AddBtn" type="button" name="button">Add</button>
+        </div><br>
+
+        <div class="col4">
+            <div class="Malmesbury">
+                <input class="theCity" type="radio" name="city" id="CK" value="CK">
+                <label for="Malmesbury">Malmesbury (CK)</label><br>
+            </div>
+            <br>
+            <div class="Belville">
+                <input class="theCity" type="radio" name="city" id="CY" value="CY">
+                <label for="Belville">Belville (CY)</label><br>
+            </div>
+            <br>
+            <div class="CT">
+                <input class="theCity" type="radio" name="city" id="CA" value="CA">
+                <label for="Cape Town">Cape Town (CA)</label>
+            </div><br>
+
+        </div>
+        <br>
+        <div class="col5">
+            <button class="ShowButton" type="button" name="button">Show</button>
+            <button class="ViewAllButton" type="button" name="button">View All</button>
+            <button class="ResetButton" type="button" name="button">Reset</button>
+        </div>
+
+        <label class="">
+            <span class="Registration"></span>
+        </label><br>
+
+        <div class="jojos"></div>
+
     </div>
 </body>
 <script src="RegistrationFunction.js"></script>
 <script src="Registration_numbers.js"></script>
+
 </html>

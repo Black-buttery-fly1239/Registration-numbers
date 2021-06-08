@@ -18,8 +18,6 @@ var resetBtnElem = document.querySelector(".ResetBtn")
 var listElem = document.querySelector(".jojo")
 
 //get the localStorage
-
-
 var existingReg;
 // console.log(existingReg);
 if (localStorage['regNumber']) {
@@ -41,6 +39,8 @@ window.addEventListener('load', (event) => {
 
 });
 var settingInstance = Registration(existingReg);
+
+
 
 //Do the Addbtn to display the textbox
 AddBtnElem.addEventListener('click', function () {
@@ -112,6 +112,7 @@ console.log(suza[i])
       emptyElem.innerHTML = "";
     }, 4000)
   }
+  regRadioBtn.checked= false;
 });
 
 
@@ -139,7 +140,160 @@ viewBtnElem.addEventListener('click', function () {
 });
 
 resetBtnElem.addEventListener('click', function () {
+  window.localStorage.removeItem('regNumber')
   location.reload()
-  localStorage.clear();
+  // localStorage.clear();
 
 });
+
+
+
+//get a reference to the enter registration no.
+var regSets = document.querySelector(".RegistrationSettings")
+//get a reference for the error display
+var emptiesElem = document.querySelector(".empties")
+//get a reference for the Add message display
+var spacesElem = document.querySelector(".emptiesSpace")
+//get a reference for the add buttton
+var AddElem = document.querySelector(".AddBtn")
+//get a reference for the radio buttons display
+var regElem = document.querySelector(".Registration")
+//get a reference for the show button
+var showsElem = document.querySelector(".ShowButton")
+//get a reference for the view all button
+var viewAllElem = document.querySelector(".ViewAllButton")
+//get a reference for the reset button
+var resetsElem = document.querySelector(".ResetButton")
+// get reference for the empty div for the appendchild
+var listsElem = document.querySelector(".jojos")
+
+//get the localStorage
+var existingRegiez;
+
+var regiezTemplateSource = document.querySelector(".userTemplate").innerHTML;
+var regiezTemplate = Handlebars.compile(regiezTemplateSource);
+
+if (localStorage['regList']) {
+  existingRegiez = JSON.parse(localStorage.getItem('regList'));
+  
+}
+
+window.addEventListener('load', (event) => {
+  existingRegiez
+  for (var i = 0; i < existingRegiez.length; i++) {
+
+  
+    var pules = document.createElement('span');
+    
+    pules.innerHTML = regiezTemplate({registration:existingRegiez[i]})
+    listsElem.appendChild(pules)
+  }
+
+});
+var settingInstance = Registration(existingRegiez);
+
+
+
+//Do the Addbtn to display the textbox
+AddElem.addEventListener('click', function () {
+
+  var regiez = settingInstance.getReg()
+  if (!regiez.includes(regSet.value.toUpperCase())) {
+
+    if (settingInstance.checkValidate(regSets.value)) {
+      
+
+      let pules = document.createElement('span')
+      if (regSets.value.length > 0) {
+        pules.innerHTML = regSets.value
+        listsElem.appendChild(pules);
+      }
+      
+      settingInstance.theReg(regSets.value);
+      localStorage.setItem('regList', JSON.stringify(settingInstance.getReg()));
+
+      spacesElem.innerHTML = "Registration Added!!!"
+      setTimeout(function () {
+        spacesElem.innerHTML = "";
+      }, 3000);
+    } else {
+      emptiesElem.innerHTML = "Please enter valid registration number!"
+      setTimeout(function () {
+        emptiesElem.innerHTML = "";
+      }, 4000)
+    }
+  }
+  regSets.value = "";
+});
+
+
+showsElem.addEventListener('click', function () {
+
+  var regiezRadioBtn = document.querySelector("input[name='city']:checked");
+
+  if (regiezRadioBtn) {
+    
+    if (localStorage['regList']) {
+      existingRegiez = JSON.parse(localStorage.getItem('regList'));
+    }
+    while (listsElem.hasChildNodes()) {
+      listsElem.removeChild(listsElem.firstChild);
+    }
+    var suzani = existingRegiez.filter(reg => reg.startsWith(regiezRadioBtn.value));
+    if (regiezRadioBtn.value && suzani.length > 0) {
+       for (var i = 0; i < suzani.length; i++) {
+
+     
+console.log(suzani[i])
+        pules = document.createElement('span');
+        pules.innerHTML = suzani[i]
+        listsElem.appendChild(pules);
+      }
+    } else {
+      emptiesElem.innerHTML = "There is no matching registration number of that town at the current moment!"
+      setTimeout(function () {
+        emptiesElem.innerHTML = "";
+      }, 4000)
+    }
+
+  } else if (!regiezRadioBtn) {
+    emptiesElem.innerHTML = "Please select the Town!"
+    setTimeout(function () {
+      emptiesElem.innerHTML = "";
+    }, 4000)
+  }
+  regiezRadioBtn.checked= false;
+  
+});
+
+
+
+viewAllElem.addEventListener('click', function () {
+  var regies = settingInstance.getReg()
+
+  while (listsElem.hasChildNodes()) {
+    listsElem.removeChild(listsElem.firstChild);
+  }
+  var zabalazani = existingReg
+  if (existingRegiez) {
+    for (var i = 0; i < zabalazani.length; i++) {
+      var pules = document.createElement('span');
+      pules.innerHTML = zabalazani[i]
+      listsElem.appendChild(pules)
+    }
+    }
+    else if(regies.length === 0){
+      emptiesElem.innerHTML = "The localstorage is empty!!!"
+          setTimeout(function () {
+            emptiesElem.innerHTML = "";
+          }, 4000)
+  }
+});
+
+resetsElem.addEventListener('click', function () {
+  window.localStorage.removeItem('regList')
+  location.reload()
+  // localStorage.clear();
+
+});
+

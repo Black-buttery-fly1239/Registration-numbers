@@ -42,3 +42,35 @@
     padding:3px
         /* border-spacing: 15px 50px; */
  }
+
+ body {
+     display: flex;
+ }
+
+ .empties {
+    color: red;
+}
+
+.emptiesSpace {
+    color: green;
+}
+
+ .col1 {
+    text-align: center;
+ }
+ .RegistrationSettings {
+     width: 53%;
+ }
+
+ .jojos span {
+    background-color: yellow;
+    border-style: solid; 
+    border-color: black;
+    border-radius: 25px;
+    border-spacing: 13px;
+    margin-right: 20px;
+    display: inline-block;
+    margin: 0.5em;
+    padding:3px
+        /* border-spacing: 15px 50px; */
+ }
