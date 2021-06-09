@@ -18,7 +18,7 @@ var resetBtnElem = document.querySelector(".ResetBtn")
 var listElem = document.querySelector(".jojo")
 
 //get the localStorage
-var existingReg;
+var existingReg = [];
 // console.log(existingReg);
 if (localStorage['regNumber']) {
   existingReg = JSON.parse(localStorage.getItem('regNumber'));
@@ -26,17 +26,15 @@ if (localStorage['regNumber']) {
 }
 // console.log(existingReg);
 window.addEventListener('load', (event) => {
-  existingReg
-  for (var i = 0; i < existingReg.length; i++) {
-
-    // zabalaza = existingReg.key(i)
-    // console.log(zabalaza);
-    var pule = document.createElement('span');
-    // console.log(existingReg[i]);
-    pule.innerHTML = existingReg[i]
-    listElem.appendChild(pule)
-  }
-
+  var zabalaza = existingReg
+  if (existingReg) {
+    for (var i = 0; i < zabalaza.length; i++) {
+      // console.log(zabalaza);
+      var pule = document.createElement('span');
+      pule.innerHTML = zabalaza[i]
+      listElem.appendChild(pule)
+    }
+    }
 });
 var settingInstance = Registration(existingReg);
 
@@ -146,7 +144,7 @@ resetBtnElem.addEventListener('click', function () {
 
 });
 
-
+/***********************************************************************//*************************************************/
 
 //get a reference to the enter registration no.
 var regSets = document.querySelector(".RegistrationSettings")
@@ -168,7 +166,7 @@ var resetsElem = document.querySelector(".ResetButton")
 var listsElem = document.querySelector(".jojos")
 
 //get the localStorage
-var existingRegiez;
+var existingRegiez = [];
 
 var regiezTemplateSource = document.querySelector(".userTemplate").innerHTML;
 var regiezTemplate = Handlebars.compile(regiezTemplateSource);
@@ -179,28 +177,27 @@ if (localStorage['regList']) {
 }
 
 window.addEventListener('load', (event) => {
-  existingRegiez
-  for (var i = 0; i < existingRegiez.length; i++) {
 
-  
-    var pules = document.createElement('span');
-    
-    pules.innerHTML = existingRegiez[i]
-    listsElem.appendChild(pules)
-  }
-
+  var zabalazani = existingRegiez
+  if (existingRegiez) {
+    for (var i = 0; i < zabalazani.length; i++) {
+      var pules = document.createElement('span');
+      pules.innerHTML = zabalazani[i]
+      listsElem.appendChild(pules)
+    }
+    }
 });
-var settingInstance = Registration(existingRegiez);
+var settingsInstance = Registration(existingRegiez);
 
 
 
 //Do the Addbtn to display the textbox
 AddElem.addEventListener('click', function () {
 
-  var regiez = settingInstance.getReg()
-  if (!regiez.includes(regSet.value.toUpperCase())) {
+  var regiez = settingsInstance.getReg()
+  if (!regiez.includes(regSets.value.toUpperCase())) {
 
-    if (settingInstance.checkValidate(regSets.value)) {
+    if (settingsInstance.checkValidate(regSets.value)) {
       
 
       let pules = document.createElement('span')
@@ -209,12 +206,12 @@ AddElem.addEventListener('click', function () {
         listsElem.appendChild(pules);
       }
       
-      settingInstance.theReg(regSets.value);
-      localStorage.setItem('regList', JSON.stringify(settingInstance.getReg()));
+      settingsInstance.theReg(regSets.value);
+      localStorage.setItem('regList', JSON.stringify(settingsInstance.getReg()));
 
       spacesElem.innerHTML = "Registration Added!!!"
       setTimeout(function () {
-        spacesElem.innerHTML = "";
+        spacesElem.innerHTML = ""; 
       }, 3000);
     } else {
       emptiesElem.innerHTML = "Please enter valid registration number!"
@@ -241,14 +238,16 @@ showsElem.addEventListener('click', function () {
     }
     var suzani = existingRegiez.filter(regNo => regNo.startsWith(regiezRadioBtn.value));
     if (regiezRadioBtn.value && suzani.length > 0) {
-       for (var i = 0; i < suzani.length; i++) {
-
+      //  for (var i = 0; i < suzani.length; i++) {
      
-console.log(suzani[i])
-        pules = document.createElement('span');
-        pules.innerHTML = suzani[i]
-        listsElem.appendChild(pules);
-      }
+        // var suzaa = suzani;
+      //   console.log(suzaa)
+      //   pules = document.createElement('span');
+      //   pules.innerHTML = regiezTemplate({regH:suzaa})
+      //   console.log(regiezTemplate)
+      //   listsElem.appendChild(pules);
+      listsElem.innerHTML = regiezTemplate({regH:suzani})
+      //}
     } else {
       emptiesElem.innerHTML = "There is no matching registration number of that town at the current moment!"
       setTimeout(function () {
@@ -269,7 +268,7 @@ console.log(suzani[i])
 
 
 viewAllElem.addEventListener('click', function () {
-  var regies = settingInstance.getReg()
+  var regies = settingsInstance.getReg()
 
   while (listsElem.hasChildNodes()) {
     listsElem.removeChild(listsElem.firstChild);

@@ -1,5 +1,5 @@
-function Registration(existingReg) {
-    var regNo =  existingReg || []
+function Registration() {
+    var regNo =  existingReg || [] 
    //console.log(existingReg);
 
     function theReg(reg) {
