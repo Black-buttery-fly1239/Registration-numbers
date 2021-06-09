@@ -239,7 +239,7 @@ showsElem.addEventListener('click', function () {
     while (listsElem.hasChildNodes()) {
       listsElem.removeChild(listsElem.firstChild);
     }
-    var suzani = existingRegiez.filter(reg => reg.startsWith(regiezRadioBtn.value));
+    var suzani = existingRegiez.filter(regNo => regNo.startsWith(regiezRadioBtn.value));
     if (regiezRadioBtn.value && suzani.length > 0) {
        for (var i = 0; i < suzani.length; i++) {
 
