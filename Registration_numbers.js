@@ -185,7 +185,7 @@ window.addEventListener('load', (event) => {
   
     var pules = document.createElement('span');
     
-    pules.innerHTML = regiezTemplate({registration:existingRegiez[i]})
+    pules.innerHTML = existingRegiez[i]
     listsElem.appendChild(pules)
   }
 
@@ -274,7 +274,7 @@ viewAllElem.addEventListener('click', function () {
   while (listsElem.hasChildNodes()) {
     listsElem.removeChild(listsElem.firstChild);
   }
-  var zabalazani = existingReg
+  var zabalazani = existingRegiez
   if (existingRegiez) {
     for (var i = 0; i < zabalazani.length; i++) {
       var pules = document.createElement('span');
