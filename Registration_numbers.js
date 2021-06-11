@@ -152,6 +152,10 @@ viewBtnElem.addEventListener('click', function () {
 resetBtnElem.addEventListener('click', function () {
   location.reload()
   window.localStorage.removeItem('regNumber')
+  emptyElem.innerHTML = "localStorage cleared!!"
+  setTimeout(function () {
+    emptyElem.innerHTML = "";
+  }, 3000)
   // localStorage.clear();
 
 });
@@ -305,13 +309,18 @@ viewAllElem.addEventListener('click', function () {
     emptiesElem.innerHTML = "The localstorage is empty!!!"
     setTimeout(function () {
       emptiesElem.innerHTML = "";
-    }, 4000)
+    }, 3000)
   }
 });
 
 resetsElem.addEventListener('click', function () {
   location.reload()
   window.localStorage.removeItem('regList')
+    emptiesElem.innerHTML = "localStorage cleared!!"
+    setTimeout(function () {
+      emptiesElem.innerHTML = "";
+    }, 3000)
+
   // localStorage.clear();
 
 });
