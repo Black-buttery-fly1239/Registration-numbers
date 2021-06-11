@@ -139,6 +139,7 @@ viewBtnElem.addEventListener('click', function () {
       var pule = document.createElement('span');
       pule.innerHTML = zabalaza[i]
       listElem.appendChild(pule)
+      console.log(zabalaza[i])
     }
   }
   else if (regies.length === 0) {
